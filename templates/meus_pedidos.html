@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="order-history-section">
+    <h2>Meus Pedidos</h2>
+    
+    {% if not pedidos %}
+        <div class="cart-empty">
+            <p>Você ainda não fez nenhum pedido.</p>
+            <a href="{{ url_for('main.index') }}" class="btn-primary">Começar a Comprar</a>
+        </div>
+        
+    {% else %}
+        <div class="order-list">
+            {% for pedido in pedidos %}
+            <article class="order-card">
+                <div class="order-header">
+                    <div>
+                        <strong>Pedido:</strong> #{{ pedido.pedidoID }}
+                    </div>
+                    <div>
+                        <strong>Data:</strong> {{ pedido.data.strftime('%d/%m/%Y') }}
+                    </div>
+                    <div>
+                        <strong>Total:</strong> R$ {{ "%.2f"|format(pedido.valorTotal) }}
+                    </div>
+                    <div>
+                        <strong>Status:</strong> {{ pedido.status }}
+                    </div>
+                </div>
+                
+                <div class="order-items">
+                    {% for item in pedido.itens_pedido %}
+                    <div class="order-item">
+                        <span>{{ item.produto.nome }} (x{{ item.quantidade }})</span>
+                        <span>R$ {{ "%.2f"|format(item.precoUnitario * item.quantidade) }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!-- 1. Esta linha "herda" todo o código do base.html -->
+{% extends "base.html" %}
+
+<!-- 2. Este bloco define o que entra no "buraco" do base.html -->
+{% block content %}
+    
+    <!-- Seção de "Herói" (Banner Principal) -->
+    <section class="hero-section">
+        <h1>Confira a nossa coleção de fim de ano.</h1>
+        <p>Celebre o encanto do Natal com o que é importante para você. Edições limitadas disponíveis apenas neste período especial.</p>
+        <a href="{{ url_for('main.index') }}" class="btn-primary">Comprar Agora</a>
+    </section>
+
+    <!-- Seção da Vitrine de Produtos -->
+    <section class="product-grid">
+        <h2>Nossa Seleção</h2>
+        
+        <div class="grid-container">
+            
+            <!-- Loop dinâmico (com as imagens) -->
+            {% for produto in produtos %}
+            <article class="product-card">
+                
+                {% if produto.imagem %}
+                    <!-- Se o produto TEM uma imagem no banco -->
+                    <img src="{{ url_for('static', filename='images/' + produto.imagem) }}" alt="{{ produto.nome }}" class="product-card-image">
+                {% else %}
+                    <!-- Se está NULL, mostra o placeholder -->
+                    <div class="product-placeholder-image"></div>
+                {% endif %}
+                
+                <h3>{{ produto.nome }}</h3>
+                <p>R$ {{ "%.2f"|format(produto.preco) }}</p>
+                <a href="{{ url_for('main.produto', produto_id=produto.produtoID) }}" class="btn-secondary">
+                    Ver Detalhes
+                </a>
+            </article>
+            {% endfor %}
+            
+            <!-- Não há mais produtos estáticos aqui -->
+            
+        </div>
+    </section>
+
+{% endblock %}
+<!-- 3. Fim do bloco de conteúdo -->

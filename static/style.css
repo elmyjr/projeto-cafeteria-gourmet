@@ -1,0 +1,474 @@
+/* --- Reset Básico e Tipografia (Inspiração Blue Bottle) --- */
+body {
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    color: #333;
+    background-color: #fdfdfd; /* Um branco levemente "quente" */
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: 700; /* Títulos em negrito */
+    letter-spacing: 0.5px;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.8rem; text-align: center; margin-bottom: 40px; }
+h3 { font-size: 1.2rem; margin-bottom: 5px; }
+p { font-size: 1rem; font-weight: 300; } /* Texto leve */
+
+a {
+    text-decoration: none;
+    color: #005a9c; /* Um azul premium */
+    font-weight: 700;
+}
+
+/* --- Estrutura Principal --- */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- 1. Navegação (Header) --- */
+.main-header {
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    padding: 0 20px;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+}
+
+.nav-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.nav-links, .nav-actions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a, .nav-actions a {
+    font-size: 0.9rem;
+    font-weight: 400; /* Mais fino que os links normais */
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover, .nav-actions a:hover {
+    color: #005a9c;
+}
+
+/* --- 2. Seção Hero (Banner) --- */
+.hero-section {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #fafafa;
+    margin-bottom: 40px;
+}
+
+.hero-section h1 {
+    margin-top: 0;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin: 10px auto 30px;
+}
+
+/* --- Botões --- */
+.btn-primary, .btn-secondary {
+    padding: 12px 25px;
+    border: 1px solid #005a9c;
+    border-radius: 4px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+.btn-primary {
+    background-color: #005a9c;
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #004a80;
+    border-color: #004a80;
+}
+.btn-secondary {
+    background-color: transparent;
+    color: #005a9c;
+}
+.btn-secondary:hover {
+    background-color: #005a9c;
+    color: #fff;
+}
+
+/* --- 3. Grid de Produtos --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.product-card h3 {
+    margin-top: 15px;
+}
+
+.product-card p {
+    color: #555;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.product-placeholder-image {
+    width: 100%;
+    height: 250px;
+    background-color: #f4f4f4; /* Placeholder para a imagem */
+    border-radius: 4px 4px 0 0;
+}
+
+/* --- Rodapé --- */
+.main-footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #777;
+}
+/* --- 4. Formulários (Cadastro/Login) --- */
+.form-section {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.form-section h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.form-container .form-group {
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+
+.form-container button[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-alternate {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* --- 5. Mensagens Flash --- */
+.flash-messages {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.flash-message {
+    padding: 15px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+.flash-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* --- 6. Página de Detalhes do Produto --- */
+
+.product-page-layout {
+    display: grid;
+    /* Duas colunas: 45% para imagem, 55% para texto */
+    grid-template-columns: 45% 1fr; 
+    gap: 50px;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+/* Coluna da Esquerda (Imagem) */
+.product-main-image-placeholder {
+    width: 100%;
+    height: 500px; /* Altura da imagem principal */
+    background-color: #f4f4f4;
+    border-radius: 4px;
+}
+
+/* Coluna da Direita (Detalhes) */
+.product-details-column h1 {
+    font-size: 2.8rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.product-page-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.product-page-description {
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* Formulário de Ações */
+.product-actions {
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+.product-actions .form-group {
+    max-width: 150px; /* Limita o tamanho do campo 'quantidade' */
+    margin-bottom: 10px;
+}
+
+.product-actions label {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* Input de Quantidade */
+.product-actions input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Texto de Estoque */
+.stock-info {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Botões de Ação */
+.product-actions .btn-primary,
+.product-actions .btn-secondary {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px; /* Botões maiores */
+    font-size: 1rem;
+}
+
+/* Adiciona responsividade básica para telas menores */
+@media (max-width: 768px) {
+    .product-page-layout {
+        /* Vira coluna única em telas pequenas */
+        grid-template-columns: 1fr;
+    }
+    .product-main-image-placeholder {
+        height: 350px; /* Imagem menor no mobile */
+    }
+    .product-details-column h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* --- 7. Página do Carrinho --- */
+.cart-section h2 {
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.cart-empty {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Coluna de itens 2x maior que o resumo */
+    gap: 40px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse; /* Tira bordas duplas */
+}
+
+.cart-table thead {
+    border-bottom: 1px solid #eee;
+}
+
+.cart-table th {
+    text-align: left;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    color: #777;
+    text-transform: uppercase;
+}
+
+.cart-table td {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+}
+
+.cart-item-image { width: 100px; }
+.cart-item-details h3 { margin: 0 0 5px 0; font-size: 1.1rem; }
+.cart-item-details a { font-size: 0.9rem; color: #999; font-weight: 400; }
+
+/* Resumo do Pedido */
+.cart-summary {
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 4px;
+    height: fit-content; /* Faz o box ter a altura do conteúdo */
+}
+.cart-summary h3 {
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #555;
+}
+.summary-row.total-row {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #333;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+    margin-top: 20px;
+}
+.cart-summary .btn-primary {
+    margin-top: 20px;
+}
+
+/* --- 8. Página Meus Pedidos --- */
+.order-history-section h2 {
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.order-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fdfdfd;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.order-items {
+    padding: 20px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 0.9rem;
+}
+
+.order-item span:first-child {
+    color: #555;
+}
+.order-item span:last-child {
+    font-weight: 700;
+}
+
+/* --- 9. Mensagens Flash --- */
+
+.flash-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+/* --- 9. Estilos de Imagem de Produto --- */
+
+.product-card-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /*height: 250px;  Mesma altura do placeholder antigo */
+    object-fit: cover; /* Cobre o espaço sem distorcer */
+    border-radius: 4px 4px 0 0;
+}
+
+.product-main-image {
+    width: 100%;
+    height: 500px; /* Mesma altura do placeholder antigo */
+    object-fit: cover;
+    border-radius: 4px;
+}

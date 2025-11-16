@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="cart-section">
+    <h2>Sua Cesta</h2>
+    
+    {% if not produtos_no_carrinho %}
+        <div class="cart-empty">
+            <p>Sua Cesta está vazia.</p>
+            <a href="{{ url_for('main.index') }}" class="btn-primary">Continuar Comprando</a>
+        </div>
+        
+    {% else %}
+        <div class="cart-layout">
+        
+            <div class="cart-items">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Produto</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in produtos_no_carrinho %}
+                        <tr>
+                            <td class="cart-item-image">
+                                <div class="product-placeholder-image" style="height: 80px; width: 80px;"></div>
+                            </td>
+                            <td class="cart-item-details">
+                                <h3>{{ item.produto.nome }}</h3>
+                                <a href="#">Remover</a> </td>
+                            <td>R$ {{ "%.2f"|format(item.produto.preco) }}</td>
+                            <td>{{ item.quantidade }}</td>
+                            <td>R$ {{ "%.2f"|format(item.subtotal) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="cart-summary">
+                <h3>Resumo do Pedido</h3>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>R$ {{ "%.2f"|format(total_carrinho) }}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Frete</span>
+                    <span>(a calcular)</span>
+                </div>
+                <div class="summary-row total-row">
+                    <span>Total</span>
+                    <span>R$ {{ "%.2f"|format(total_carrinho) }}</span>
+                </div>
+                
+                <form method="POST" action="{{ url_for('main.finalizar_pedido') }}" style="margin-top: 20px;">
+                    <button type="submit" class="btn-primary" style="width: 100%;">
+                        Finalizar Pedido
+                    </button>
+                </form>
+            </div>
+            
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

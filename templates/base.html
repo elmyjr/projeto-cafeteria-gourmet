@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 1. Fonte premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- 2. Nosso arquivo de CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <title>Cafeteria Gourmet</title>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-nav">
+            <!-- Logo/Nome Principal -->
+            <a href="{{ url_for('main.index') }}" class="nav-logo">Cafeteria Gourmet</a>
+            
+            <!-- Links de Navegação -->
+            <ul class="nav-links">
+                <li><a href="{{ url_for('main.index') }}">Loja</a></li>
+                <li><a href="{{ url_for('main.assinaturas') }}">Assinaturas</a></li>
+                <li><a href="{{ url_for('main.nossa_historia') }}">Nossa História</a></li>
+            </ul>
+            
+            <!-- Links de Ação (Com Lógica de Login) -->
+            <ul class="nav-actions">
+                {% if session['cliente_id'] %}
+                    <!-- Se está logado -->
+                    <li><a href="{{ url_for('main.meus_pedidos') }}">Olá, {{ session['cliente_nome'].split(' ')[0] }}</a></li>
+                    <li><a href="{{ url_for('main.meus_pedidos') }}">Meus Pedidos</a></li>
+                    <li><a href="{{ url_for('main.adicionar_endereco') }}">Meu Endereço</a></li>
+                    <li><a href="{{ url_for('main.logout') }}">Sair</a></li>
+                {% else %}
+                    <!-- Se NÃO está logado -->
+                    <li><a href="{{ url_for('main.login') }}">Login</a></li>
+                    <li><a href="{{ url_for('main.cadastro') }}">Criar Conta</a></li>
+                {% endif %}
+
+                <li>
+                    <a href="{{ url_for('main.carrinho') }}">
+                        Carrinho ({{ session['carrinho']|length if session['carrinho'] else 0 }})
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 3. Bloco de Conteúdo -->
+    <main class="content-wrapper">
+    
+        <!-- Bloco de Mensagens Flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-messages">
+              {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <!-- O "BURACO" ONDE O CONTEÚDO ENTRA -->
+        <!-- SÓ DEVE HAVER UM DESTE -->
+        {% block content %}{% endblock %}
+        
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Cafeteria Gourmet. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

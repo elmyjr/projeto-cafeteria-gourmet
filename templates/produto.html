@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="product-page-layout">
+    
+    <!-- Coluna da Esquerda: Imagem -->
+    <div class="product-image-column">
+        {% if produto.imagem %}
+            <img src="{{ url_for('static', filename='images/' + produto.imagem) }}" alt="{{ produto.nome }}" class="product-card-image">
+        {% else %}
+            <div class="product-placeholder-image"></div>
+        {% endif %}
+    </div>
+    
+    <!-- Coluna da Direita: Detalhes e Ações -->
+    <div class="product-details-column">
+        <h1>{{ produto.nome }}</h1>
+        
+        <p class="product-page-price">R$ {{ "%.2f"|format(produto.preco) }}</p>
+        
+        <p class="product-page-description">
+            {{ produto.descricao }}
+        </p>
+        
+        <!-- Formulário de Ações (Adicionar ao Carrinho) -->
+        <form method="POST" action="{{ url_for('main.adicionar_ao_carrinho') }}" class="product-actions">
+            
+            <!-- Input escondido para dizer AO CARRINHO qual produto é -->
+            <input type="hidden" name="produto_id" value="{{ produto.produtoID }}">
+            
+            <div class="form-group">
+                <label for="quantidade">Quantidade</label>
+                <!-- Usamos o 'produto.estoque' para limitar a quantidade máxima -->
+                <input type="number" id="quantidade" name="quantidade" value="1" min="1" max="{{ produto.estoque }}">
+            </div>
+            
+            <!-- Mostra o estoque disponível -->
+            <p class="stock-info">
+                ({{ produto.estoque }} unidades disponíveis)
+            </p>
+            
+            <!-- Botões de Ação -->
+            <button type="submit" class="btn-primary" name="action" value="add_to_cart">
+                Adicionar a Cesta
+            </button>
+            <button type="submit" class="btn-secondary" name="action" value="buy_now">
+                Concluir pedido
+            </button>
+        </form>
+        
+    </div>
+    
+</section>
+{% endblock %}
