@@ -55,7 +55,6 @@ def adicionar_ao_carrinho():
     if 'carrinho' not in session:
         session['carrinho'] = {}
 
-    # Converte o ID para string 
     produto_id_str = str(produto_id)
 
     # 2. Adiciona o item ao carrinho
@@ -66,7 +65,7 @@ def adicionar_ao_carrinho():
         # Se é um item novo, define a quantidade
         session['carrinho'][produto_id_str] = quantidade
 
-    # 3. Marca a sessão como "modificada" para garantir que salve
+    # 3. Marca a sessão como "modificada" para salvar
     session.modified = True
 
     flash(f'Produto adicionado a Cesta!', 'success')
@@ -80,8 +79,8 @@ def adicionar_ao_carrinho():
         return redirect(request.referrer or url_for('main.index'))
     
 # FIM DA ROTA ADICIONAR AO CARRINHO
-# ROTA CARRINHO DE COMPRAS
 
+# ROTA CARRINHO DE COMPRAS
 @main.route('/carrinho')
 def carrinho():
     # Pega o carrinho da sessão (ou um dict vazio se não existir)
@@ -237,8 +236,8 @@ def adicionar_endereco():
     # Rota de proteção: só para usuários logados
     if 'cliente_id' not in session:
         flash("Você precisa estar logado para acessar esta página.", "error")
-        return redirect(url_for('main.login', next=request.path))
-    
+        return redirect(url_for('main.login', next=request.path)) # redireciona de volta após login 
+                                                                  #para que o usuário possa continuar o que estava fazendo   
     if request.method == 'POST':
         # Pega dados do formulário
         rua = request.form.get('rua')
@@ -251,9 +250,7 @@ def adicionar_endereco():
 
         # Pega o ID do cliente da sessão
         cliente_id = session['cliente_id']
-        
-        # (Simplificação de MVP: apenas cria um novo. 
-        #  Uma versão melhor verificaria se já existe e atualizaria)
+        # Cria o novo endereço
         
         novo_endereco = Endereco(
             clienteID=cliente_id,

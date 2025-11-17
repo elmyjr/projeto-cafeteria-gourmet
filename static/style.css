@@ -1,25 +1,25 @@
-/* --- Reset Básico e Tipografia (Inspiração Blue Bottle) --- */
+/* --- (Inspiração Blue Bottle) --- */
 body {
     font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     color: #333;
-    background-color: #fdfdfd; /* Um branco levemente "quente" */
+    background-color: #fdfdfd; 
     line-height: 1.6;
 }
 
 h1, h2, h3 {
-    font-weight: 700; /* Títulos em negrito */
+    font-weight: 700; 
     letter-spacing: 0.5px;
 }
 
 h1 { font-size: 2.5rem; }
 h2 { font-size: 1.8rem; text-align: center; margin-bottom: 40px; }
 h3 { font-size: 1.2rem; margin-bottom: 5px; }
-p { font-size: 1rem; font-weight: 300; } /* Texto leve */
+p { font-size: 1rem; font-weight: 300; } 
 
 a {
     text-decoration: none;
-    color: #005a9c; /* Um azul premium */
+    color: #005a9c; 
     font-weight: 700;
 }
 
@@ -62,7 +62,7 @@ a {
 
 .nav-links a, .nav-actions a {
     font-size: 0.9rem;
-    font-weight: 400; /* Mais fino que os links normais */
+    font-weight: 400; 
     color: #444;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -143,7 +143,7 @@ a {
 .product-placeholder-image {
     width: 100%;
     height: 250px;
-    background-color: #f4f4f4; /* Placeholder para a imagem */
+    background-color: #f4f4f4;
     border-radius: 4px 4px 0 0;
 }
 
@@ -192,7 +192,7 @@ a {
     border-radius: 4px;
     font-size: 1rem;
     font-family: 'Lato', sans-serif;
-    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    box-sizing: border-box;
 }
 
 .form-container button[type="submit"] {
@@ -232,7 +232,6 @@ a {
 
 .product-page-layout {
     display: grid;
-    /* Duas colunas: 45% para imagem, 55% para texto */
     grid-template-columns: 45% 1fr; 
     gap: 50px;
     max-width: 1100px;
@@ -242,7 +241,7 @@ a {
 /* Coluna da Esquerda (Imagem) */
 .product-main-image-placeholder {
     width: 100%;
-    height: 500px; /* Altura da imagem principal */
+    height: 500px; 
     background-color: #f4f4f4;
     border-radius: 4px;
 }
@@ -275,7 +274,7 @@ a {
 }
 
 .product-actions .form-group {
-    max-width: 150px; /* Limita o tamanho do campo 'quantidade' */
+    max-width: 150px; 
     margin-bottom: 10px;
 }
 
@@ -308,18 +307,17 @@ a {
 .product-actions .btn-secondary {
     width: 100%;
     margin-bottom: 15px;
-    padding: 15px; /* Botões maiores */
+    padding: 15px; 
     font-size: 1rem;
 }
 
-/* Adiciona responsividade básica para telas menores */
+
 @media (max-width: 768px) {
-    .product-page-layout {
-        /* Vira coluna única em telas pequenas */
+    .product-page-layout {       
         grid-template-columns: 1fr;
     }
     .product-main-image-placeholder {
-        height: 350px; /* Imagem menor no mobile */
+        height: 350px; 
     }
     .product-details-column h1 {
         font-size: 2.2rem;
@@ -341,13 +339,13 @@ a {
 
 .cart-layout {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Coluna de itens 2x maior que o resumo */
+    grid-template-columns: 2fr 1fr; 
     gap: 40px;
 }
 
 .cart-table {
     width: 100%;
-    border-collapse: collapse; /* Tira bordas duplas */
+    border-collapse: collapse; 
 }
 
 .cart-table thead {
@@ -378,7 +376,7 @@ a {
     border: 1px solid #eee;
     padding: 30px;
     border-radius: 4px;
-    height: fit-content; /* Faz o box ter a altura do conteúdo */
+    height: fit-content; 
 }
 .cart-summary h3 {
     margin-top: 0;
@@ -461,14 +459,13 @@ a {
 .product-card-image {
     width: 100%;
     aspect-ratio: 1 / 1;
-    /*height: 250px;  Mesma altura do placeholder antigo */
-    object-fit: cover; /* Cobre o espaço sem distorcer */
+    object-fit: cover; 
     border-radius: 4px 4px 0 0;
 }
 
 .product-main-image {
     width: 100%;
-    height: 500px; /* Mesma altura do placeholder antigo */
+    height: 500px; 
     object-fit: cover;
     border-radius: 4px;
 }

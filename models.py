@@ -1,7 +1,6 @@
 
 
-# 1. Importe o 'db' do nosso novo arquivo 'extensions.py'+
-#    (NÃO HÁ MAIS NENHUMA IMPORTAÇÃO DO 'app.py' AQUI)
+# 1. Importa o 'db' do arquivo 'extensions.py'+
 from extensions import db
 
 # --- Definição dos Modelos (Tabelas) ---
@@ -30,7 +29,6 @@ class Endereco(db.Model):
     estado = db.Column(db.String(2), nullable=False)
     cep = db.Column(db.String(8), nullable=False)
     
-    # Relacionamentos
     cliente = db.relationship('Cliente', back_populates='enderecos')
     pedidos = db.relationship('Pedido', back_populates='endereco', lazy=True)
 
@@ -44,7 +42,6 @@ class Produto(db.Model):
     tipo = db.Column(db.String(50))
     imagem = db.Column(db.String(100), nullable=True)
     
-    # Relacionamentos
     itens_pedido = db.relationship('ItemPedido', back_populates='produto', lazy=True)
 class Pedido(db.Model):
     __tablename__ = 'pedido'
@@ -55,7 +52,6 @@ class Pedido(db.Model):
     status = db.Column(db.String(50), nullable=False, default='Aguardando Pagamento')
     valorTotal = db.Column('valortotal', db.Numeric(10, 2), nullable=False)
     
-    # Relacionamentos
     cliente = db.relationship('Cliente', back_populates='pedidos')
     endereco = db.relationship('Endereco', back_populates='pedidos')
     itens_pedido = db.relationship('ItemPedido', back_populates='pedido', lazy=True)
@@ -68,6 +64,5 @@ class ItemPedido(db.Model):
     quantidade = db.Column(db.Integer, nullable=False, default=1)
     precoUnitario = db.Column('precounitario', db.Numeric(10, 2), nullable=False)
     
-    # Relacionamentos
     pedido = db.relationship('Pedido', back_populates='itens_pedido')
     produto = db.relationship('Produto', back_populates='itens_pedido')

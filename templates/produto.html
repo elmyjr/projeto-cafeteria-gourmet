@@ -25,16 +25,13 @@
         <!-- Formulário de Ações (Adicionar ao Carrinho) -->
         <form method="POST" action="{{ url_for('main.adicionar_ao_carrinho') }}" class="product-actions">
             
-            <!-- Input escondido para dizer AO CARRINHO qual produto é -->
             <input type="hidden" name="produto_id" value="{{ produto.produtoID }}">
             
             <div class="form-group">
                 <label for="quantidade">Quantidade</label>
-                <!-- Usamos o 'produto.estoque' para limitar a quantidade máxima -->
                 <input type="number" id="quantidade" name="quantidade" value="1" min="1" max="{{ produto.estoque }}">
             </div>
-            
-            <!-- Mostra o estoque disponível -->
+
             <p class="stock-info">
                 ({{ produto.estoque }} unidades disponíveis)
             </p>

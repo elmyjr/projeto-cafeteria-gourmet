@@ -1,7 +1,6 @@
-<!-- 1. Esta linha "herda" todo o código do base.html -->
+
 {% extends "base.html" %}
 
-<!-- 2. Este bloco define o que entra no "buraco" do base.html -->
 {% block content %}
     
     <!-- Seção de "Herói" (Banner Principal) -->
@@ -22,11 +21,9 @@
             <article class="product-card">
                 
                 {% if produto.imagem %}
-                    <!-- Se o produto TEM uma imagem no banco -->
                     <img src="{{ url_for('static', filename='images/' + produto.imagem) }}" alt="{{ produto.nome }}" class="product-card-image">
                 {% else %}
-                    <!-- Se está NULL, mostra o placeholder -->
-                    <div class="product-placeholder-image"></div>
+                    <div class="product-placeholder-image"></div><!-- Placeholder se não houver imagem -->
                 {% endif %}
                 
                 <h3>{{ produto.nome }}</h3>
@@ -37,10 +34,8 @@
             </article>
             {% endfor %}
             
-            <!-- Não há mais produtos estáticos aqui -->
             
         </div>
     </section>
 
 {% endblock %}
-<!-- 3. Fim do bloco de conteúdo -->
